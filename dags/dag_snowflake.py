@@ -11,7 +11,7 @@ from airflow import DAG
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
-from airflow.operators.python import PythonOperator
+from airflow.operators.python_operator import PythonOperator
 from airflow.providers.snowflake.hooks.snowflake import SnowflakeHook
 
 #1) fetch amazon data (extract) 2) clean data (transform)
@@ -155,7 +155,7 @@ default_args = {
 }
 
 dag = DAG(
-    'fetech_amazon_data_snowflake',
+    'fetch_amazon_data_snowflake',
     default_args=default_args,
     description='A simple DAG to fetch data from Amazon and load into Snowflake',
     schedule_interval=timedelta(days=1),
